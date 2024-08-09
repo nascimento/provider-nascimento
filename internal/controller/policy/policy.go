@@ -35,6 +35,8 @@ import (
 	"github.com/crossplane/provider-nascimento/apis/iamsr/v1alpha1"
 	apisv1alpha1 "github.com/crossplane/provider-nascimento/apis/v1alpha1"
 	"github.com/crossplane/provider-nascimento/internal/features"
+
+	xpv1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
 const (
@@ -139,6 +141,8 @@ func (c *external) Observe(ctx context.Context, mg resource.Managed) (managed.Ex
 
 	// These fmt statements should be removed in the real implementation.
 	fmt.Printf("Observing: %+v", cr)
+
+	cr.Status.SetConditions(xpv1.Available())
 
 	return managed.ExternalObservation{
 		// Return false when the external resource does not exist. This lets
