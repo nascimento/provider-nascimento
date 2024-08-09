@@ -1,0 +1,9 @@
+apiVersion: iamsr.nascimento.crossplane.io/v1alpha1
+kind: Policy
+metadata:
+  name: example
+spec:
+  forProvider:
+    configurableField: test
+  providerConfigRef:
+    name: example
