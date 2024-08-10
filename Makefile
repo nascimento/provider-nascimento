@@ -3,7 +3,7 @@
 PROJECT_NAME := provider-nascimento
 PROJECT_REPO := github.com/crossplane/$(PROJECT_NAME)
 
-PLATFORMS ?= linux_amd64 linux_arm64
+PLATFORM ?= linux_amd64 linux_arm64
 -include build/makelib/common.mk
 
 # ====================================================================================
@@ -31,7 +31,7 @@ GO111MODULE = on
 # Setup Images
 
 IMAGES = provider-nascimento
-DOCKER_provider-nascimento := nascimento
+DOCKER_myrepo := nascimento
 BUILD_REGISTRY := nascimento
 DOCKER_REGISTRY := nascimento
 -include build/makelib/imagelight.mk
