@@ -1,7 +1,12 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: crossplane-system
+---
+apiVersion: v1
 kind: Secret
 metadata:
-  namespace: devops-system
+  namespace: crossplane-system
   name: example-provider-secret
 type: Opaque
 data:
@@ -15,6 +20,6 @@ spec:
   credentials:
     source: Secret
     secretRef:
-      namespace: devops-system
+      namespace: crossplane-system
       name: example-provider-secret
       key: credentials

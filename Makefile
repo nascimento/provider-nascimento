@@ -3,7 +3,7 @@
 PROJECT_NAME := provider-nascimento
 PROJECT_REPO := github.com/crossplane/$(PROJECT_NAME)
 
-PLATFORMS ?= linux_amd64 linux_arm64
+PLATFORMS ?= linux_amd64 linux_arm64 darwin_amd64
 -include build/makelib/common.mk
 
 # ====================================================================================
@@ -31,6 +31,9 @@ GO111MODULE = on
 # Setup Images
 
 IMAGES = provider-nascimento
+DOCKER_provider-nascimento := nascimento
+BUILD_REGISTRY := nascimento
+DOCKER_REGISTRY := nascimento
 -include build/makelib/imagelight.mk
 
 # ====================================================================================
@@ -92,7 +95,7 @@ dev: $(KIND) $(KUBECTL)
 	@$(KIND) create cluster --name=$(PROJECT_NAME)-dev
 	@$(KUBECTL) cluster-info --context kind-$(PROJECT_NAME)-dev
 	@$(INFO) Installing Crossplane CRDs
-	@$(KUBECTL) apply --server-side -k https://github.com/crossplane/crossplane//cluster?ref=master
+	@$(KUBECTL) apply --server-side -k https://github.com/crossplane/crossplane//cluster?ref=v1.16.0
 	@$(INFO) Installing Provider Nascimento CRDs
 	@$(KUBECTL) apply -R -f package/crds
 	@$(INFO) Starting Provider Nascimento controllers
