@@ -39,12 +39,12 @@ DOCKER_REGISTRY := nascimento
 # ====================================================================================
 # Setup XPKG
 
-XPKG_REG_ORGS ?= xpkg.upbound.io/crossplane
-# NOTE(hasheddan): skip promoting on xpkg.upbound.io as channel tags are
-# inferred.
-XPKG_REG_ORGS_NO_PROMOTE ?= xpkg.upbound.io/crossplane
-XPKGS = provider-nascimento
--include build/makelib/xpkg.mk
+# XPKG_REG_ORGS ?= xpkg.upbound.io/crossplane
+# # NOTE(hasheddan): skip promoting on xpkg.upbound.io as channel tags are
+# # inferred.
+# XPKG_REG_ORGS_NO_PROMOTE ?= xpkg.upbound.io/crossplane
+# XPKGS = provider-nascimento
+# -include build/makelib/xpkg.mk
 
 # NOTE(hasheddan): we force image building to happen prior to xpkg build so that
 # we ensure image is present in daemon.
